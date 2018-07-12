@@ -9,7 +9,6 @@ module.exports = merge(base, {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    chunkFilename: '[name].chunk.js',
   },
   devtool: 'source-map',
   mode: 'development',
@@ -25,17 +24,17 @@ module.exports = merge(base, {
     }, {
       test: /\.css$/,
       use: ['style-loader', 'css-loader'],
-    },{
+    }, {
       test: /\.less$/,
-      use: ['style-loader', 'css-loader','less-loader'],
+      use: ['style-loader', 'css-loader', 'less-loader'],
     }]
   },
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
     hot: true,
     publicPath: '/',
-    clientLogLevel: 'none',
     port: 3000,
+    inline: true,
     proxy: {
       '/api/*': {
         target: 'http://localhost:8080',

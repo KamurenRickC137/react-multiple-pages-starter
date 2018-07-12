@@ -1,7 +1,7 @@
 import React from 'react'
-import create from '../create'
 import SayHello from '../components/SayHello'
 import Helmet from 'react-helmet'
+import { hot } from 'react-hot-loader'
 const PostPage = () => (
   <div>
     <SayHello name="post" />
@@ -13,4 +13,4 @@ const PostPage = () => (
     <a href="/other/index.html">to other</a>
   </div>
 )
-create(PostPage)
+export default hot(module)(PostPage)

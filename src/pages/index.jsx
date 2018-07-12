@@ -1,16 +1,15 @@
 import React from 'react'
-import create from '../create'
 import SayHello from '../components/SayHello'
 import Helmet from 'react-helmet'
 import '../style/index.scss'
+import { hot } from 'react-hot-loader'
 const Index = () => (
   <div>
     <Helmet>
       <title>index page</title>
     </Helmet>
-    <SayHello name="zido" />
+    <SayHello name="world" />
     <a href="/post.html">to post</a>
   </div>
 )
-
-create(Index)
+export default hot(module)(Index)

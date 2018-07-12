@@ -4,6 +4,7 @@ const path = require('path')
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const pagePath = path.resolve(__dirname, '../', 'src', 'pages')
+const createEntries = require('./createEntries')
 function resolveFile(parentPath, htmlWebpacklist, entry) {
   var pa = fs.readdirSync(parentPath)
   pa.forEach(function (currentName) {
@@ -11,11 +12,11 @@ function resolveFile(parentPath, htmlWebpacklist, entry) {
     var info = fs.statSync(currentPath)
     if (info.isFile() && /.jsx?$/.test(currentName)) {
       const relativePath = currentPath.replace(pagePath + '/', '').replace(/.jsx?$/, '')
-      entry[relativePath] = './src/pages/' + currentPath.replace(pagePath + '/', '')
+      entry[relativePath] = './src/.entries/' + currentPath.replace(pagePath + '/', '')
       htmlWebpacklist.push(new HtmlWebpackPlugin({
         template: 'index.html',
         filename: relativePath + '.html',
-        chunks: [relativePath, 'react', 'reactDOM'],
+        chunks: [relativePath],
         inject: 'body',
       }))
     } else if (info.isDirectory()) {
@@ -31,6 +32,7 @@ module.exports = function () {
   var htmlWebpacklist = []
   var entry = {}
   resolveFile(pagePath, htmlWebpacklist, entry)
+  createEntries(entry)
   return {
     htmlWebpacklist,
     entry,

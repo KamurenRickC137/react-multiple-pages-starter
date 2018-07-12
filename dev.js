@@ -25,7 +25,6 @@ async function start() {
     noInfo: true,
     progress: true,
   }
-
   webpackDevServer.addDevServerEntrypoints(config, devServerOptions)
   const compiler = webpack(config)
   var server = new WebpackDevServer(compiler, devServerOptions)
