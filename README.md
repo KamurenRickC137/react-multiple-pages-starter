@@ -23,3 +23,7 @@ const App = () => <div>hello world</div>
 create(App)
 ```
 即完成一个页面，简单快捷，访问路径为/\**.html。其中\**为src/pages下的相对路径，并将.jsx替换为.html即可。
+
+# 多页面动态实现
+
+通过gulp监控页面文件变化，修改webpack的entry和htmlwebpackplugins
