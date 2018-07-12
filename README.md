@@ -17,7 +17,6 @@
 
 ```jsx
 import React from 'react'
-import create from '../create'
 import {hot} from 'react-hot-loader' //非热加载模式下无需引入
 const App = () => <div>hello world</div>
 export default hot(module)(App) //热加载模式
